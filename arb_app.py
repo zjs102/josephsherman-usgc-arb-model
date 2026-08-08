@@ -89,7 +89,14 @@ imp_editor_key = f"imp_editor_{rid}"
 exp_row_pos = {MONTH_LABELS[m]: i for i, m in enumerate(MONTHS)}
 imp_row_pos = {MONTH_LABELS[m]: i for i, m in enumerate(MONTHS)}
 
-tab_export, tab_import, tab_results = st.tabs(["Export drivers", "Import drivers", "Combined results"])
+tab_export, tab_import, tab_results, tab_howto = st.tabs(
+    ["Export drivers", "Import drivers", "Combined results", "How To"]
+)
+
+with tab_howto:
+    readme_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "README.md")
+    with open(readme_path, "r", encoding="utf-8") as f:
+        st.markdown(f.read())
 
 # ======================================================================
 # EXPORT INPUTS
